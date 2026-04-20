@@ -32,8 +32,40 @@ class CommandParserTest {
     }
 
     @Test
+    void shouldParseCommandsCaseInsensitivelyAndTrimWhitespace() {
+        Command hint = CommandParser.parse("  HINT  ");
+        Command check = CommandParser.parse("CHECK");
+        Command quit = CommandParser.parse("Quit");
+        Command clear = CommandParser.parse("a3 CLEAR");
+
+        assertAll(
+                () -> assertEquals(Command.Type.HINT, hint.type()),
+                () -> assertEquals(Command.Type.CHECK, check.type()),
+                () -> assertEquals(Command.Type.QUIT, quit.type()),
+                () -> assertEquals(Command.Type.CLEAR, clear.type()),
+                () -> assertEquals(0, clear.position().row()),
+                () -> assertEquals(2, clear.position().col())
+        );
+    }
+
+    @Test
     void shouldRejectInvalidCommand() {
         Command command = CommandParser.parse("Z9 4");
+        assertEquals(Command.Type.INVALID, command.type());
+    }
+
+    @Test
+    void shouldRejectBlankInput() {
+        Command command = CommandParser.parse("   ");
+
+        assertEquals(Command.Type.INVALID, command.type());
+        assertEquals("Invalid command.", command.errorMessage());
+    }
+
+    @Test
+    void shouldRejectOutOfRangeValueInPlaceCommand() {
+        Command command = CommandParser.parse("A1 0");
+
         assertEquals(Command.Type.INVALID, command.type());
     }
 }

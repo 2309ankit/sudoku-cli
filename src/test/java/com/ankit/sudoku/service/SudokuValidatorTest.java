@@ -32,7 +32,7 @@ class SudokuValidatorTest {
         grid[0][0] = 8;
         grid[1][1] = 8;
 
-        assertEquals("Number 8 already exists in the same 3×3 subgrid.", validator.validate(grid));
+        assertEquals("Number 8 already exists in the same 3x3 subgrid.", validator.validate(grid));
     }
 
     @Test

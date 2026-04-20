@@ -67,7 +67,7 @@ public class SudokuValidator {
                             continue;
                         }
                         if (seen[value] > 0) {
-                            return "Number " + value + " already exists in the same 3×3 subgrid.";
+                            return "Number " + value + " already exists in the same 3x3 subgrid.";
                         }
                         seen[value]++;
                     }
