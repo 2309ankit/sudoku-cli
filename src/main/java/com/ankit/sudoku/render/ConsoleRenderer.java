@@ -9,6 +9,7 @@ public final class ConsoleRenderer {
     private ConsoleRenderer() {
     }
 
+    @SuppressWarnings("java:S106")
     public static void printBoard(SudokuBoard board) {
         printBoard(board, System.out);
     }

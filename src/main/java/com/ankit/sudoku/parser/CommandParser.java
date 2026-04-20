@@ -7,8 +7,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class CommandParser {
-    private static final Pattern PLACE_PATTERN = Pattern.compile("^([A-Ia-i])([1-9])\\s+([1-9])$");
-    private static final Pattern CLEAR_PATTERN = Pattern.compile("^([A-Ia-i])([1-9])\\s+clear$", Pattern.CASE_INSENSITIVE);
+    private static final String ROW_GROUP = "([A-I])";
+    private static final Pattern PLACE_PATTERN = Pattern.compile("^" + ROW_GROUP + "([1-9])\\s+([1-9])$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern CLEAR_PATTERN = Pattern.compile("^" + ROW_GROUP + "([1-9])\\s+clear$", Pattern.CASE_INSENSITIVE);
 
     private CommandParser() {
     }

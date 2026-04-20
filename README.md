@@ -40,6 +40,7 @@ mvn compile exec:java -Dexec.mainClass=com.ankit.sudoku.SudokuApp
 - GitHub Actions runs `mvn test` on every push to `main` and on pull requests.
 - JaCoCo coverage reports are generated locally under `target/site/jacoco/`.
 - Real-process smoke test scripts are available at `scripts/smoke-test.cmd` and `scripts/smoke-test.ps1`.
+- SonarScanner for Maven is configured in `pom.xml`, and shared analysis paths are defined in `sonar-project.properties`.
 
 Run the smoke tests:
 ```powershell
@@ -49,6 +50,19 @@ powershell -ExecutionPolicy Bypass -File .\scripts\smoke-test.ps1
 Or on Windows Command Prompt:
 ```bat
 scripts\smoke-test.cmd
+```
+
+## Sonar analysis
+SonarLint itself is an IDE plugin, so it is not run through Maven. This project is configured for SonarScanner for Maven instead.
+
+Prepare reports:
+```bash
+mvn test
+```
+
+Run Sonar analysis against your SonarQube or SonarCloud instance:
+```bash
+mvn sonar:sonar -Dsonar.host.url=<your-sonar-url> -Dsonar.token=<your-token>
 ```
 
 ## Commands

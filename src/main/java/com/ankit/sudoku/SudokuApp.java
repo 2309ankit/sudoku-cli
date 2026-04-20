@@ -11,12 +11,14 @@ import java.util.Scanner;
 
 public class SudokuApp {
 
+    @SuppressWarnings("java:S106")
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
             run(scanner, System.out, new SudokuGenerator());
         }
     }
 
+    @SuppressWarnings("java:S106")
     static void run(Scanner scanner, PrintStream out, SudokuGenerator generator) {
         out.println("Welcome to Sudoku!");
         out.println();

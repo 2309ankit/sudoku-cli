@@ -13,6 +13,7 @@ import java.util.Queue;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SudokuAppIntegrationTest {
@@ -83,7 +84,7 @@ class SudokuAppIntegrationTest {
 
         assertAll(
                 () -> assertTrue(console.contains("Goodbye!")),
-                () -> assertTrue(occurrences(console, "Current grid:") == 0)
+                () -> assertEquals(0, occurrences(console, "Current grid:"))
         );
     }
 
