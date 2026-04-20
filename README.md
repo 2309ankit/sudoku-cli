@@ -26,9 +26,29 @@ A Java 17 + Maven command-line Sudoku game.
 mvn test
 ```
 
+JaCoCo coverage report:
+```bash
+target/site/jacoco/index.html
+```
+
 ## Run application
 ```bash
 mvn compile exec:java -Dexec.mainClass=com.ankit.sudoku.SudokuApp
+```
+
+## Automation
+- GitHub Actions runs `mvn test` on every push to `main` and on pull requests.
+- JaCoCo coverage reports are generated locally under `target/site/jacoco/`.
+- Real-process smoke test scripts are available at `scripts/smoke-test.cmd` and `scripts/smoke-test.ps1`.
+
+Run the smoke tests:
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\smoke-test.ps1
+```
+
+Or on Windows Command Prompt:
+```bat
+scripts\smoke-test.cmd
 ```
 
 ## Commands
